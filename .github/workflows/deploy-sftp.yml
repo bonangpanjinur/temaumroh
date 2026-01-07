@@ -58,7 +58,7 @@ jobs:
           
           # ⚠️ PENTING: Ganti path di bawah ini sesuai struktur folder di Hosting Anda.
           # Pastikan diakhiri dengan garis miring (/)
-          server-dir: /public_html/umrohweb.site/wp-content/themes/temaumroh/
+          server-dir: /public_html/rizqunatourtravel.com/wp-content/themes/temaumroh/
           
           # File yang tidak akan di-upload/ditimpa
           exclude: |
