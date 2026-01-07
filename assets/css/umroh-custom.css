@@ -123,3 +123,26 @@
     background-color: #fffaf0;
     color: #9c4221;
 }
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .umh-catalog-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .umh-package-content-grid,
+    .umh-dashboard-grid,
+    .umh-agent-tools {
+        grid-template-columns: 1fr !important;
+    }
+
+    .umh-header-profile {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .umh-avatar {
+        margin-right: 0 !important;
+        margin-bottom: 15px;
+    }
+}

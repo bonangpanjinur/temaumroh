@@ -17,6 +17,19 @@ function temaumroh_setup() {
 }
 add_action( 'after_setup_theme', 'temaumroh_setup' );
 
+function temaumroh_widgets_init() {
+    register_sidebar( array(
+        'name'          => esc_html__( 'Main Sidebar', 'temaumroh' ),
+        'id'            => 'main-sidebar',
+        'description'   => esc_html__( 'Add widgets here.', 'temaumroh' ),
+        'before_widget' => '<section id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h4 class="widget-title">',
+        'after_title'   => '</h4>',
+    ) );
+}
+add_action( 'widgets_init', 'temaumroh_widgets_init' );
+
 function temaumroh_scripts() {
     // Enqueue main stylesheet
     wp_enqueue_style( 'temaumroh-style', get_stylesheet_uri() );
@@ -26,5 +39,8 @@ function temaumroh_scripts() {
 
     // Enqueue main JS
     wp_enqueue_script( 'temaumroh-main-js', get_template_directory_uri() . '/assets/js/main.js', array(), '1.0.0', true );
+
+    // Enqueue RemixIcon for icons as recommended in the guide
+    wp_enqueue_style( 'remixicon', 'https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css' );
 }
 add_action( 'wp_enqueue_scripts', 'temaumroh_scripts' );
