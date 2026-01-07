@@ -64,8 +64,13 @@ h1, h2, h3, .site-title {
 .umh-hero {
     position: relative;
     height: 600px;
+    /* Fallback color jika gambar gagal dimuat (PENTING agar teks putih terbaca) */
+    background-color: var(--primary-dark);
     /* Ganti URL ini dengan gambar Masjidil Haram/Nabawi berkualitas tinggi */
-    background: url('https://images.unsplash.com/photo-1565552629477-ff72852894c9?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+    background-image: url('https://images.unsplash.com/photo-1565552629477-ff72852894c9?q=80&w=1920&auto=format&fit=crop');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     display: flex;
     align-items: center;
     color: #fff;
@@ -74,7 +79,7 @@ h1, h2, h3, .site-title {
 .umh-hero-overlay {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(to right, rgba(30, 58, 138, 0.8), rgba(30, 58, 138, 0.4));
+    background: linear-gradient(to right, rgba(30, 58, 138, 0.9), rgba(30, 58, 138, 0.6)); /* Sedikit dipergelap opacitynya */
 }
 
 .umh-hero-content {
@@ -153,7 +158,7 @@ h1, h2, h3, .site-title {
 .umh-card-image {
     height: 220px;
     position: relative;
-    background: #e2e8f0;
+    background-color: #e2e8f0; /* Fallback color untuk placeholder gambar */
 }
 
 .umh-card-image img {
