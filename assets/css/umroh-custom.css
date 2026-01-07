@@ -1,5 +1,5 @@
 /* * Umroh Enterprise Custom Styles 
- * Colors: Gold (#D4AF37), Dark Blue (#1e3a8a), White (#fff)
+ * Update V2: Jemaah Experience Focus
  */
 
 :root {
@@ -7,302 +7,323 @@
     --primary-dark: #1e3a8a;
     --text-dark: #1f2937;
     --text-light: #6b7280;
-    --bg-light: #f3f4f6;
+    --bg-light: #f9fafb;
+    --border-color: #e5e7eb;
 }
 
-body {
-    font-family: 'Lato', sans-serif;
-    color: var(--text-dark);
+/* --- GLOBAL LAYOUT --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-h1, h2, h3, .site-title {
-    font-family: 'Amiri', serif; /* Font nuansa Islami */
-}
-
-/* --- COMPONENTS --- */
-
-.umh-btn {
-    display: inline-block;
-    padding: 10px 24px;
-    border-radius: 50px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
-}
-
-.umh-btn-primary {
-    background: var(--primary-gold);
-    color: #fff;
-}
-.umh-btn-primary:hover {
-    background: #b8952b;
-    color: #fff;
-    transform: translateY(-2px);
-}
-
-.umh-btn-outline {
-    border-color: var(--primary-gold);
-    color: var(--primary-gold);
-    background: transparent;
-}
-.umh-btn-outline:hover {
-    background: var(--primary-gold);
-    color: #fff;
-}
-
-.umh-btn-outline-light {
-    border-color: #fff;
-    color: #fff;
-}
-.umh-btn-outline-light:hover {
+/* --- HEADER --- */
+.site-header {
     background: #fff;
-    color: var(--primary-dark);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-/* --- HERO SECTION --- */
-.umh-hero {
-    position: relative;
-    height: 600px;
-    /* Fallback color jika gambar gagal dimuat (PENTING agar teks putih terbaca) */
-    background-color: var(--primary-dark);
-    /* Ganti URL ini dengan gambar Masjidil Haram/Nabawi berkualitas tinggi */
-    background-image: url('https://images.unsplash.com/photo-1565552629477-ff72852894c9?q=80&w=1920&auto=format&fit=crop');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: flex;
-    align-items: center;
-    color: #fff;
-}
-
-.umh-hero-overlay {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(to right, rgba(30, 58, 138, 0.9), rgba(30, 58, 138, 0.6)); /* Sedikit dipergelap opacitynya */
-}
-
-.umh-hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 800px;
-}
-
-.umh-hero h1 {
-    font-size: 3.5rem;
-    line-height: 1.2;
-    margin-bottom: 20px;
-}
-
-.umh-hero p {
-    font-size: 1.2rem;
-    opacity: 0.9;
-    margin-bottom: 30px;
-    max-width: 600px;
-}
-
-/* --- SEARCH BOX --- */
-.umh-search-box {
-    background: #fff;
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
-
-.umh-search-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 150px;
-    gap: 20px;
-    align-items: end;
-}
-
-.search-item label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 8px;
-    color: var(--text-dark);
-}
-
-.search-item select {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
-}
-
-/* --- CARDS (PACKAGE) --- */
-.umh-catalog-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 30px;
-    margin-top: 30px;
-}
-
-.umh-card {
-    background: #fff;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid #eee;
-    display: flex;
-    flex-direction: column;
-}
-
-.umh-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-}
-
-.umh-card-image {
-    height: 220px;
-    position: relative;
-    background-color: #e2e8f0; /* Fallback color untuk placeholder gambar */
-}
-
-.umh-card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.duration-badge {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: rgba(0,0,0,0.7);
-    color: #fff;
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: bold;
-}
-
-.umh-card-body {
-    padding: 20px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.umh-card-title {
-    font-size: 1.25rem;
-    margin: 0 0 15px;
-    color: var(--primary-dark);
-    line-height: 1.4;
-}
-
-.umh-meta-icons {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    color: var(--text-light);
-    font-size: 0.95rem;
-}
-
-.meta-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.meta-item i {
-    color: var(--primary-gold);
-}
-
-.umh-price-row {
+.header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: auto; /* Push to bottom */
+    height: 80px;
 }
 
-.price-info small {
-    display: block;
-    color: #999;
-    font-size: 0.75rem;
+.text-logo {
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.brand-umroh { color: var(--primary-gold); font-family: 'Amiri', serif; }
+.brand-corp { color: var(--primary-dark); }
+
+.main-navigation ul {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+    margin: 0; padding: 0;
 }
 
-.price-info .price {
-    color: var(--primary-gold);
-    font-size: 1.3rem;
-    font-weight: 700;
+.main-navigation a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+}
+.main-navigation a:hover { color: var(--primary-gold); }
+
+.header-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
 }
 
-/* --- FEATURES --- */
-.umh-features-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-    margin-top: 40px;
-}
+.menu-toggle { display: none; }
 
-.feature-card {
-    text-align: center;
-    padding: 20px;
-}
-
-.feature-card .icon-box {
-    font-size: 3rem;
-    color: var(--primary-gold);
-    margin-bottom: 15px;
-}
-
-/* --- DEPARTURE LIST (SIDEBAR STYLE IN HOMEPAGE) --- */
-.umh-cta-box {
+/* --- FOOTER --- */
+.site-footer {
     background: var(--primary-dark);
     color: #fff;
-    border-radius: 12px;
-    padding: 40px;
-    position: relative;
-    overflow: hidden;
+    padding: 60px 0 20px;
+    margin-top: 60px;
 }
 
-.departure-list {
+.footer-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-    margin-top: 30px;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
 }
 
-.dep-item {
-    background: rgba(255,255,255,0.1);
-    padding: 15px;
-    border-radius: 8px;
+.widget-title {
+    font-family: 'Amiri', serif;
+    color: var(--primary-gold);
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.contact-list {
+    list-style: none;
+    padding: 0;
+}
+.contact-list li {
+    margin-bottom: 12px;
+    display: flex;
+    gap: 10px;
+    opacity: 0.8;
+}
+
+/* --- PACKAGE DETAIL PAGE --- */
+.package-hero {
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
     display: flex;
     align-items: center;
-    gap: 15px;
+    color: #fff;
+    margin-bottom: 40px;
 }
 
-.dep-date {
+.package-hero .overlay {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+    position: absolute; top:0; left:0; width:100%; height:100%;
+}
+
+.package-hero .hero-content {
+    position: relative; z-index: 2;
+}
+
+.pkg-category {
+    background: var(--primary-gold);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.package-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+}
+
+.content-box {
     background: #fff;
-    color: var(--primary-dark);
-    padding: 5px 10px;
-    border-radius: 6px;
-    text-align: center;
-    min-width: 60px;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    margin-bottom: 30px;
+    border: 1px solid var(--border-color);
 }
 
-.dep-date .d-day { display: block; font-size: 1.2rem; font-weight: bold; }
-.dep-date .d-month { display: block; font-size: 0.7rem; text-transform: uppercase; }
+.content-box h3 {
+    border-bottom: 2px solid var(--bg-light);
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    color: var(--primary-dark);
+}
 
-.dep-info { flex: 1; }
-.dep-info strong { display: block; font-size: 0.9rem; line-height: 1.2; }
-.dep-info small { opacity: 0.7; font-size: 0.8rem; }
+.hotel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+.hotel-item {
+    background: var(--bg-light);
+    padding: 15px;
+    border-radius: 8px;
+}
+.hotel-item .city { display: block; font-size: 0.8rem; color: #666; }
+.hotel-item .stars { color: var(--primary-gold); margin-top: 5px; }
 
-.dep-btn {
+/* Sticky Sidebar Booking */
+.sticky-sidebar {
+    position: sticky;
+    top: 100px;
+}
+
+.booking-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-top: 5px solid var(--primary-gold);
+}
+
+.price-header {
+    text-align: center;
+    background: var(--bg-light);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+.price-amount {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--primary-dark);
+}
+
+.price-list .price-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px dashed #ddd;
+}
+
+.form-select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.full-width { width: 100%; text-align: center; }
+
+/* --- JEMAAH DASHBOARD --- */
+.dashboard-wrapper {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    min-height: 80vh;
+    background: #f3f4f6;
+}
+
+.dashboard-sidebar {
+    background: #fff;
+    border-right: 1px solid #e5e7eb;
+    padding: 30px 20px;
+}
+
+.user-profile {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.avatar-circle {
+    width: 80px; height: 80px;
+    background: var(--primary-dark);
+    color: #fff;
+    font-size: 2rem;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+}
+
+.dash-nav a {
+    display: block;
+    padding: 12px 15px;
+    color: var(--text-dark);
+    text-decoration: none;
+    border-radius: 6px;
+    margin-bottom: 5px;
+    display: flex; align-items: center; gap: 10px;
+}
+.dash-nav a:hover, .dash-nav a.active {
+    background: var(--bg-light);
+    color: var(--primary-dark);
+    font-weight: bold;
+}
+.dash-nav a.logout-link { color: #dc2626; margin-top: 30px; }
+
+.dashboard-content {
+    padding: 40px;
+}
+
+.status-tracker {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+}
+
+.tracker-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.progress-steps {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+.progress-steps::before {
+    content: ''; position: absolute; top: 15px; left: 0; width: 100%; height: 2px;
+    background: #e5e7eb; z-index: 1;
+}
+
+.step {
+    position: relative; z-index: 2;
+    text-align: center;
+    background: #fff;
+    padding: 0 10px;
+}
+.step .circle {
+    width: 35px; height: 35px;
+    background: #e5e7eb;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 10px;
+    color: #999;
+}
+.step.completed .circle, .step.active .circle {
     background: var(--primary-gold);
     color: #fff;
-    padding: 5px 10px;
-    border-radius: 4px;
-    text-decoration: none;
-    font-size: 0.8rem;
+}
+.step.active span { font-weight: bold; color: var(--primary-dark); }
+
+.dash-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
 }
 
-/* --- RESPONSIVE --- */
+.dash-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+}
+
+/* --- MOBILE RESPONSIVE --- */
 @media (max-width: 768px) {
-    .umh-hero h1 { font-size: 2.5rem; }
-    .umh-search-grid { grid-template-columns: 1fr; }
-    .umh-features-grid { grid-template-columns: 1fr 1fr; }
+    .header-container { padding: 0 15px; }
+    .main-navigation, .header-actions .umh-btn-outline-dark { display: none; }
+    .menu-toggle { display: block; font-size: 1.5rem; background: none; border: none; cursor: pointer; }
+    
+    .footer-grid, .package-layout, .dashboard-wrapper, .dash-grid-2 {
+        grid-template-columns: 1fr;
+    }
+    
+    .sticky-sidebar { position: static; }
+    .dashboard-sidebar { border-right: none; border-bottom: 1px solid #eee; }
 }
