@@ -1,46 +1,48 @@
-name: Deploy Theme to WordPress via SFTP
+name: Deploy Theme to WordPress (Fixed)
 
 on:
   push:
-    branches: [ "main" ] # Pastikan branch utama di GitHub Anda bernama 'main'
+    branches: [ "main" ]
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    name: Build and Deploy to Server
     
     steps:
-      # 1. Ambil kode dari repository
       - name: Checkout Code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      # 2. Setup Node.js untuk build React/Assets
+      # Bagian Build (Opsional jika tidak ada package.json)
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-          cache: 'npm'
-
-      # 3. Install & Build Assets
-      #    Menggunakan 'npm install' alih-alih 'npm ci' karena package-lock.json mungkin tidak ada
+          
       - name: Install & Build Assets
         run: |
           if [ -f package.json ]; then
+            echo "package.json ditemukan. Memulai build..."
             npm install --legacy-peer-deps
             npm run build --if-present
           else
-            echo "No package.json found, skipping build."
+            echo "TIDAK ADA package.json. Melewati proses build."
+            echo "Hanya file PHP/CSS/JS mentah yang akan diupload."
           fi
-        env:
-          CI: false
 
-      # 4. Hapus folder development yang tidak perlu di-upload
+      # Hapus file sampah sebelum upload agar hemat bandwidth
       - name: Cleanup before deploy
         run: |
           rm -rf node_modules
           rm -rf .git
           rm -rf .github
+          rm -rf .gitignore
+          rm -rf README.md
 
-      # 5. Upload ke Shared Hosting
+      # PILIHAN 1: Deploy menggunakan FTP Standar (Paling sering berhasil di Shared Hosting)
+      # Jika ingin pakai SFTP (Port 22), lihat komentar di bawah "protocol".
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
         with:
@@ -48,25 +50,21 @@ jobs:
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
           
-          # Ganti ke 'ftp' jika hosting Anda menolak 'ftps'. 
-          # Shared hosting biasanya menggunakan port 21.
-          protocol: ftps 
-          port: 21
+          # --- PENTING: PILIH PROTOKOL ---
+          # Opsi A: 'ftp' (Port 21) - Coba ini dulu jika gagal terus.
+          # Opsi B: 'ftps' (Port 21) - FTP dengan SSL (Enkripsi).
+          # Opsi C: 'sftp' (Port 22) - SSH File Transfer. Hanya jika Anda punya akses SSH.
+          protocol: ftp 
+          port: 21 
           
           # Upload semua file dari folder saat ini
           local-dir: ./
           
-          # ⚠️ PENTING: Ganti path di bawah ini sesuai struktur folder di Hosting Anda.
-          # Pastikan diakhiri dengan garis miring (/)
+          # --- PENTING: CEK PATH INI ---
+          # Pastikan path ini BENAR-BENAR ADA di File Manager hosting Anda.
+          # Contoh jika domain utama: /public_html/wp-content/themes/temaumroh/
+          # Contoh jika addon domain: /rizqunatourtravel.com/wp-content/themes/temaumroh/
           server-dir: /public_html/rizqunatourtravel.com/wp-content/themes/temaumroh/
           
-          # File yang tidak akan di-upload/ditimpa
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/**
-            .github/**
-            .gitignore
-            README.md
-            webpack.config.js
-            tailwind.config.js
+          # Mode aman: false = timpa file lama, true = hapus semua di server lalu upload baru
+          dangerous-clean-slate: false
