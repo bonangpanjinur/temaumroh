@@ -1,0 +1,125 @@
+/* Override style khusus plugin UMH */
+
+/* Katalog & Kartu Paket */
+.umh-catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    margin: 30px 0;
+}
+
+.umh-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+    border: 1px solid #eee;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.umh-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+}
+
+.umh-card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.umh-card-body {
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.umh-price-tag {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.umh-price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #D4AF37;
+}
+
+/* Tombol & Aksi */
+.umh-btn {
+    display: inline-block;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border: none;
+}
+
+.umh-btn-primary {
+    background-color: #D4AF37; /* Warna Emas */
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.umh-btn-primary:hover {
+    background-color: #b8962d;
+    color: #fff;
+}
+
+.umh-btn-secondary {
+    background-color: #333;
+    color: #fff;
+}
+
+.umh-btn-outline {
+    background-color: transparent;
+    border: 2px solid #D4AF37;
+    color: #D4AF37;
+}
+
+/* Dashboard Jemaah */
+.umh-dashboard-container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.umh-header-profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.umh-booking-card {
+    background: #fdfdfd;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.status-badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.badge-paid {
+    background-color: #e6fffa;
+    color: #2c7a7b;
+}
+
+.badge-pending {
+    background-color: #fffaf0;
+    color: #9c4221;
+}
