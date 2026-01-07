@@ -1,329 +1,205 @@
-/* * Umroh Enterprise Custom Styles 
- * Update V2: Jemaah Experience Focus
- */
+/* Folder: temaumroh/assets/css/
+   File: umroh-custom.css
+*/
 
-:root {
-    --primary-gold: #D4AF37;
-    --primary-dark: #1e3a8a;
-    --text-dark: #1f2937;
-    --text-light: #6b7280;
-    --bg-light: #f9fafb;
-    --border-color: #e5e7eb;
+/* --- Tambahan / Update untuk Integrasi Grid --- */
+
+.umh-catalog-wrapper {
+    padding: 20px 0;
 }
 
-/* --- GLOBAL LAYOUT --- */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+.umh-catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
 }
 
-/* --- HEADER --- */
-.site-header {
+.umh-card {
     background: #fff;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
 }
 
-.header-container {
+.umh-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+}
+
+.umh-card-image {
+    position: relative;
+    height: 220px;
+    background-color: #eee;
+    overflow: hidden;
+}
+
+.umh-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.umh-card:hover .umh-card-image img {
+    transform: scale(1.05);
+}
+
+.placeholder-img {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f3f4f6;
+    color: #9ca3af;
+}
+
+.duration-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.umh-card-body {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.umh-card-title {
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+    line-height: 1.4;
+    font-family: 'Lato', sans-serif;
+}
+
+.umh-card-title a {
+    text-decoration: none;
+    color: var(--text-dark);
+    transition: color 0.2s;
+}
+
+.umh-card-title a:hover {
+    color: var(--primary-gold);
+}
+
+.umh-meta-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.meta-item i {
+    color: var(--primary-gold);
+}
+
+.umh-facilities-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: auto; /* Push price to bottom */
+}
+
+.fac-pill {
+    font-size: 0.75rem;
+    background: var(--bg-light);
+    padding: 3px 8px;
+    border-radius: 4px;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.umh-price-tag {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 80px;
+    margin-top: 15px;
 }
 
-.text-logo {
-    text-decoration: none;
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-.brand-umroh { color: var(--primary-gold); font-family: 'Amiri', serif; }
-.brand-corp { color: var(--primary-dark); }
-
-.main-navigation ul {
-    display: flex;
-    gap: 25px;
-    list-style: none;
-    margin: 0; padding: 0;
-}
-
-.main-navigation a {
-    text-decoration: none;
-    color: var(--text-dark);
-    font-weight: 600;
-    font-size: 0.95rem;
-    transition: color 0.3s;
-}
-.main-navigation a:hover { color: var(--primary-gold); }
-
-.header-actions {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-
-.menu-toggle { display: none; }
-
-/* --- FOOTER --- */
-.site-footer {
-    background: var(--primary-dark);
-    color: #fff;
-    padding: 60px 0 20px;
-    margin-top: 60px;
-}
-
-.footer-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 40px;
-    margin-bottom: 40px;
-}
-
-.widget-title {
-    font-family: 'Amiri', serif;
-    color: var(--primary-gold);
-    margin-bottom: 20px;
+.umh-price {
     font-size: 1.2rem;
-}
-
-.contact-list {
-    list-style: none;
-    padding: 0;
-}
-.contact-list li {
-    margin-bottom: 12px;
-    display: flex;
-    gap: 10px;
-    opacity: 0.8;
-}
-
-/* --- PACKAGE DETAIL PAGE --- */
-.package-hero {
-    height: 400px;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    display: flex;
-    align-items: center;
-    color: #fff;
-    margin-bottom: 40px;
-}
-
-.package-hero .overlay {
-    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
-    position: absolute; top:0; left:0; width:100%; height:100%;
-}
-
-.package-hero .hero-content {
-    position: relative; z-index: 2;
-}
-
-.pkg-category {
-    background: var(--primary-gold);
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.package-layout {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 40px;
-}
-
-.content-box {
-    background: #fff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-    margin-bottom: 30px;
-    border: 1px solid var(--border-color);
-}
-
-.content-box h3 {
-    border-bottom: 2px solid var(--bg-light);
-    padding-bottom: 15px;
-    margin-bottom: 20px;
-    color: var(--primary-dark);
-}
-
-.hotel-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-.hotel-item {
-    background: var(--bg-light);
-    padding: 15px;
-    border-radius: 8px;
-}
-.hotel-item .city { display: block; font-size: 0.8rem; color: #666; }
-.hotel-item .stars { color: var(--primary-gold); margin-top: 5px; }
-
-/* Sticky Sidebar Booking */
-.sticky-sidebar {
-    position: sticky;
-    top: 100px;
-}
-
-.booking-card {
-    background: #fff;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    border-top: 5px solid var(--primary-gold);
-}
-
-.price-header {
-    text-align: center;
-    background: var(--bg-light);
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
-.price-amount {
-    font-size: 2rem;
     font-weight: 800;
     color: var(--primary-dark);
 }
 
-.price-list .price-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px dashed #ddd;
-}
-
-.form-select {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
+.umh-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
     border-radius: 6px;
-    margin-bottom: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+    gap: 8px;
+    cursor: pointer;
 }
 
-.full-width { width: 100%; text-align: center; }
-
-/* --- JEMAAH DASHBOARD --- */
-.dashboard-wrapper {
-    display: grid;
-    grid-template-columns: 280px 1fr;
-    min-height: 80vh;
-    background: #f3f4f6;
+.umh-btn-primary {
+    background-color: var(--primary-gold);
+    color: #fff;
+    border: 1px solid var(--primary-gold);
 }
 
-.dashboard-sidebar {
-    background: #fff;
-    border-right: 1px solid #e5e7eb;
-    padding: 30px 20px;
+.umh-btn-primary:hover {
+    background-color: #b8962d;
+    border-color: #b8962d;
 }
 
-.user-profile {
-    text-align: center;
-    margin-bottom: 40px;
+.umh-btn-outline {
+    background: transparent;
+    border: 1px solid var(--primary-dark);
+    color: var(--primary-dark);
 }
-.avatar-circle {
-    width: 80px; height: 80px;
+
+.umh-btn-outline:hover {
     background: var(--primary-dark);
     color: #fff;
-    font-size: 2rem;
-    display: flex; align-items: center; justify-content: center;
-    border-radius: 50%;
-    margin: 0 auto 15px;
 }
 
-.dash-nav a {
-    display: block;
-    padding: 12px 15px;
-    color: var(--text-dark);
-    text-decoration: none;
-    border-radius: 6px;
-    margin-bottom: 5px;
-    display: flex; align-items: center; gap: 10px;
-}
-.dash-nav a:hover, .dash-nav a.active {
-    background: var(--bg-light);
-    color: var(--primary-dark);
-    font-weight: bold;
-}
-.dash-nav a.logout-link { color: #dc2626; margin-top: 30px; }
-
-.dashboard-content {
-    padding: 40px;
-}
-
-.status-tracker {
-    background: #fff;
-    padding: 30px;
-    border-radius: 12px;
-    margin-bottom: 30px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-}
-
-.tracker-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 30px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #eee;
-}
-
-.progress-steps {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-}
-.progress-steps::before {
-    content: ''; position: absolute; top: 15px; left: 0; width: 100%; height: 2px;
-    background: #e5e7eb; z-index: 1;
-}
-
-.step {
-    position: relative; z-index: 2;
+.umh-empty-state {
     text-align: center;
+    padding: 60px;
     background: #fff;
-    padding: 0 10px;
-}
-.step .circle {
-    width: 35px; height: 35px;
-    background: #e5e7eb;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 10px;
-    color: #999;
-}
-.step.completed .circle, .step.active .circle {
-    background: var(--primary-gold);
-    color: #fff;
-}
-.step.active span { font-weight: bold; color: var(--primary-dark); }
-
-.dash-grid-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-}
-
-.dash-card {
-    background: #fff;
-    padding: 25px;
     border-radius: 12px;
+    border: 2px dashed var(--border-color);
+}
+.umh-empty-state i {
+    font-size: 4rem;
+    color: #d1d5db;
+    margin-bottom: 15px;
+    display: block;
 }
 
-/* --- MOBILE RESPONSIVE --- */
-@media (max-width: 768px) {
-    .header-container { padding: 0 15px; }
-    .main-navigation, .header-actions .umh-btn-outline-dark { display: none; }
-    .menu-toggle { display: block; font-size: 1.5rem; background: none; border: none; cursor: pointer; }
-    
-    .footer-grid, .package-layout, .dashboard-wrapper, .dash-grid-2 {
+/* Responsiveness */
+@media (max-width: 640px) {
+    .umh-catalog-grid {
         grid-template-columns: 1fr;
     }
-    
-    .sticky-sidebar { position: static; }
-    .dashboard-sidebar { border-right: none; border-bottom: 1px solid #eee; }
 }
